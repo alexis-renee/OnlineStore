@@ -7,16 +7,20 @@ This Project Application is User friendly and interacts with the application thr
 
 ## User Stories
 
-List the user stories that guided the development of your application. Format these stories as: "As a [type of user], I want [some goal] so that [some reason]."
 
-- As a user, I want to be able to input my data, so that the application can process it accordingly.
+- As a user, I want to be able to input accurate my data, so that the application can process it accordingly.
 
 - As a user, I want to receive immediate feedback, so I can understand what to do next.
 
 ## Setup
-
-Instructions on how to set up and run the project using IntelliJ IDEA.
-
+1. Download and Install IntelliJ IDEA
+2. Create a New Project
+3. Set up specific Project
+4. Create Java Classes
+5. Copy/Paste or Create Java Files
+6. Configure Main Class
+7. Run the Application
+8. Interact with the Console
 ### Prerequisites
 
 - IntelliJ IDEA: Ensure you have IntelliJ IDEA installed, which you can download from [here](https://www.jetbrains.com/idea/download/).
@@ -39,31 +43,24 @@ Follow these steps to get your application running within IntelliJ IDEA:
 
 ## Technologies Used
 
-- Java: Mention the version you are using.
-
-- Any additional libraries or frameworks used in the project.
+- IntelliJ Java: Maven 17
+- MacBook Pro
 
 ## Demo
 
-Include screenshots or GIFs that show your application in action. Use tools like [Giphy Capture](https://giphy.com/apps/giphycapture) to record a GIF of your application.
-
-![Application Screenshot](path/to/your/screenshot.png)
+/Users/dondregrisom/Desktop/Screen Shot 3.png)
 
 ## Future Work
-
-Outline potential future enhancements or functionalities you might consider adding:
-
+- Advance
 - Additional feature to be developed.
 
-- Improvement of current functionalities.
+- Improvement current functionalities.
 
 ## Resources
+- Workbook 3 Mastering Java Fundamentals
+- Youtube "Java for beginners"
 
-List resources such as tutorials, articles, or documentation that helped you during the project.
 
--xample.com)
-
-- [Effective Java](https://www.example.com)
 
 ## Team Members
 

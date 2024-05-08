@@ -1,5 +1,5 @@
 
-# Project Title
+# Online Store Application
 
 ## Description of the Project
 

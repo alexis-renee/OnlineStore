@@ -1,17 +1,15 @@
 package com.pluralsight;
 
-public class Store {
-
-}
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-    public class Store {
 
-        public static void main(String[] args) {
+public class Store {
+
+    public static void main(String[] args) {
             // Initialize variables
             ArrayList<Product> inventory = new ArrayList<Product>();
             ArrayList<Product> cart = new ArrayList<Product>();
@@ -53,50 +51,156 @@ import java.util.Scanner;
         }
 
         public static void loadInventory(String fileName, ArrayList<Product> inventory) {
-            // This method should read a CSV file with product information and
-            // populate the inventory ArrayList with Product objects. Each line
-            // of the CSV file contains product information in the following format:
-            //
-            // id,name,price,quantity
-            //
-            // where id is a unique string identifier, name is the product name,
-            // price is a double value representing the price of the product, and
-            // quantity is an integer representing the number of items available
-            // in the inventory.
+            try (BufferedReader reader = new BufferedReader(new FileReader(fileName)))
+            String line;
+            while ((line = reader.readLine()))!= null)
+
+            String[] parts = line.split(",");
+            if (parts.length == 4) {
+                String id = parts[0];
+                String name = parts[1];
+                double price = Double.parseDouble(parts[2]);
+                int quantity = Integer.parseInt(parts[3]);
+                inventory.add(new Product(id, name, price, quantity));
+            } else {
+                System.out.println("Invalid line format: " + line);
+            }
+        }
+    }
+    catch(IOException e){
+
+
+        System.err.
+
+println("Error reading file: "+e.getMessage());
+
+public static void displayProducts(ArrayList<Product> inventory, ArrayList<Product> cart, Scanner scanner) {
+    System.out.println("Enter the ID of the Product you want to add to your cart or done to finish shopping");
+    String productID = scanner.nextLine();
+    while (!productID.equalsIgnoreCase("done")) {
+        System.out.println("Enter the quantity");
+        int quantity = scanner.nextInt();
+        scanner.nextLine();
+
+        Product selectedProducts = null;
+        for (Product product : inventory) {
+            if (product.getId().equals(productID)) {
+                selectedProducts = product;
+                break;
+            }
+            if (selectedProducts != null & quantity > 0 && quantity <= selectedProducts.getQuantity()) {
+                Product cartProduct = new Product(selectedProducts.getId(), selectedProduct.getName(), selectedProduct.getPrice(), quantity);
+                cart.add(cartProduct);
+            }
+            System.out.println(quantity + "" + selectedProducts.getName() + "(s) added to cart.");
         }
 
-        public static void displayProducts(ArrayList<Product> inventory, ArrayList<Product> cart, Scanner scanner) {
-            // This method should display a list of products from the inventory,
-            // and prompt the user to add items to their cart. The method should
-            // prompt the user to enter the ID of the product they want to add to
-            // their cart, and the quantity they want to add. The method should
-            // add the selected product and quantity to the cart ArrayList.
+    } else{
+        System.out.println("Invalid product ID or quantity. Please try again ");
+        System.out.println("Enter the ID of the product you want to add to the cart");
+        productID = scanner.nextLine();
+    }
+}
+
+public static void displayCart(ArrayList<Product> cart, Scanner scanner, double totalAmount) {
+    if (cart.isEmpty()) {
+        System.out.println("Your cart is empty.");
+        return;
+    }
+
+    System.out.println("Items in the cart:");
+    System.out.println("ID\tName\tPrice\tQuantity");
+    for (Product product : cart) {
+        System.out.println(product.getId() + "\t" + product.getName() + "\t" + product.getPrice() + "\t" + product.getQuantity());
+    }
+
+    System.out.println("Total amount: " + totalAmount);
+
+    System.out.println("Enter the ID of the product you want to remove from your cart (or 'done' to finish):");
+    String productId = scanner.nextLine();
+
+    while (!productId.equalsIgnoreCase("done")) {
+        System.out.println("Enter the quantity to remove:");
+        int quantityToRemove = scanner.nextInt();
+        scanner.nextLine(); // Consume newline character
+
+        // Find the product in the cart
+        Product productToRemove = null;
+        for (Product product : cart) {
+            if (product.getId().equals(productId)) {
+                productToRemove = product;
+                break;
+            }
         }
 
-        public static void displayCart(ArrayList<Product> cart, Scanner scanner, double totalAmount) {
-            // This method should display the items in the cart ArrayList, along
-            // with the total cost of all items in the cart. The method should
-            // prompt the user to remove items from their cart by entering the ID
-            // of the product they want to remove, and the quantity they want to
-            // remove. The method should update the cart ArrayList and totalAmount
-            // variable accordingly.
-        }
+        if (productToRemove != null && quantityToRemove > 0 && quantityToRemove <= productToRemove.getQuantity()) {
+            // Update cart and total amount
+            productToRemove.setQuantity(productToRemove.getQuantity() - quantityToRemove);
+            totalAmount -= productToRemove.getPrice() * quantityToRemove;
 
-        public static void checkOut(ArrayList<Product> cart, double totalAmount) {
-            // This method should calculate the total cost of all items in the cart,
-            // and display a summary of the purchase to the user. The method should
-            // prompt the user to confirm the purchase, and deduct the total cost
-            // from their account if they confirm.
-        }
-
-        public static Product findProductById(String id, ArrayList<Product> inventory) {
-            // This method should search the inventory ArrayList for a product with
-            // the specified ID, and return the corresponding Product object. If
-            // no product with the specified ID is found, the method should return
-            // null.
+            if (productToRemove.getQuantity() == 0) {
+                cart.remove(productToRemove);
+            }
         }
     }
 
+    public static void checkOut (ArrayList < Product > cart,double totalAmount){
+        ArrayList<Product> cart = new ArrayList<Product>();
+        double totalAmount = 0.0;
+        Scanner scanner = new Scanner(System.in);
 
+        displayCart(cart, scanner, totalAmount);
+
+        checkOut(cart, totalAmount, scanner);
+
+        scanner.close();
 
     }
+    System.out.println("Summary of the purchase:");
+    System.out.println("Items in the cart:");
+    System.out.println("ID\tName\tPrice\tQuantity");
+    for (Product product : cart) {
+        System.out.println("Total amount: " + totalAmount);
+        System.out.println("Confirm purchase (yes/no):");
+        String confirm = scanner.next();
+
+        if (confirm.equalsIgnoreCase("yes")) {
+            System.out.println("Purchase confirmed. Total amount deducted from your account.");
+        } else {
+            System.out.println("Purchase canceled.");
+        }
+    }
+}
+
+
+public static Product findProductById(String id, ArrayList<Product> inventory) {
+
+    ArrayList<Product> inventory = new ArrayList<Product>();
+    String productId = "123";
+    Product product = findProductById(productId, inventory);
+    if (product != null) {
+        System.out.println("Product found:");
+        System.out.println("ID: " + product.getId());
+        System.out.println("Name: " + product.getName());
+        System.out.println("Price: " + product.getPrice());
+        System.out.println("Quantity: " + product.getQuantity());
+
+    } else {
+        System.out.println("Product with Id" + productId + " not found. ");
+
+    }
+}
+
+public static Product findProductById(String id, ArrayList<Product> inventory) {
+for (Product product : inventory) {
+    if (product.getId().equals(id)) {
+        return product;
+    }
+    return null;
+
+    }
+}
+
+
+
+

@@ -3,9 +3,7 @@
 
 ## Description of the Project
 
-Briefly describe what this Java console application does. Mention its purpose and who the intended users are. Explain the main functionality and what problems it aims to solve.
-
-![Class Diagram](path/to/your/class_diagram.png)
+This Project Application is User friendly and interacts with the application through a command-line interface (CLI) acting as the storefront. This allows users to browse and shop for products offered by the store directly from their command line.
 
 ## User Stories
 
@@ -63,20 +61,20 @@ Outline potential future enhancements or functionalities you might consider addi
 
 List resources such as tutorials, articles, or documentation that helped you during the project.
 
-- [Java Programming Tutorial](https://www.example.com)
+-xample.com)
 
 - [Effective Java](https://www.example.com)
 
 ## Team Members
 
-- **Name 1** - Specific contributions or roles.
+- **Myself, Alexis Grisom** 
 
-- **Name 2** - Specific contributions or roles.
+- **Haby Kane** 
 
 ## Thanks
 
 Express gratitude towards those who provided help, guidance, or resources:
 
-- Thank you to [Mentor's Name] for continuous support and guidance.
+- Thank you to Myself and the Application and Development Team for continuous support and guidance.
 
-- A special thanks to all teammates for their dedication and teamwork.
+- A special thanks to Raymond and the team for their dedication and teamwork.
